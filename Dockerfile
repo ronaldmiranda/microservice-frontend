@@ -9,4 +9,4 @@ RUN npm install
 
 COPY ./src .
 
-CMD ["sh", "-c", "npm start" ]
+ENTRYPOINT ["npm start"]
