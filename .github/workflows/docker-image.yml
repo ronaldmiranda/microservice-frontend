@@ -6,38 +6,5 @@ on:
 
 jobs:
 
-  build:
-    runs-on: ubuntu-latest
-    if: ${{ github.ref != 'refs/heads/main' }}
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: configuring environment variables
-        run: |
-          echo "DOCKER_TAG=$(echo $GITHUB_SHA | head -c7)" >> $GITHUB_ENV
-          echo "LAST_TAG=$(cat .last_sucessful_tag)" >> $GITHUB_ENV
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v1.1.0
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: ${{ secrets.DOCKER_USERNAME }}/frontend
-          tags: ${{ env.DOCKER_TAG }}, latest
-
-      - name: generate release file
-        run: |
-          echo ${{ env.DOCKER_TAG }} > .last_sucessful_tag
-          sed -i 's|'${{ env.LAST_TAG }}'|'$(cat .last_sucessful_tag)'|' ./helm/values.yaml
-
-      - name: Commit files
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit -am "Image version: $GITHUB_SHA "
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          branch: ${{ github.ref }}
+  main_workflow:
+    uses: ronaldmiranda/microservice-workflow/.github/workflow/pipeline.yaml@master
