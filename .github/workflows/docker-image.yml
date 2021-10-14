@@ -37,9 +37,10 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git commit -am "Bump Docker Tag"
+        git commit -am "Image version: $GITHUB_SHA "
 
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GH_TOKEN }}
+        branch: ${{ github.ref }}
