@@ -7,4 +7,4 @@ on:
 jobs:
 
   main_workflow:
-    uses: ronaldmiranda/microservice-workflow/.github/workflow/pipeline.yaml@master
+    uses: ronaldmiranda/microservice-workflow/.github/workflows/pipeline.yaml@master
