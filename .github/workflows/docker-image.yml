@@ -33,13 +33,13 @@ jobs:
         echo ${{ env.DOCKER_TAG }} > .last_sucessful_tag
         sed -i 's|'${{ env.LAST_TAG }}'|'$(cat .last_sucessful_tag)'|' ./helm/values.yaml
 
-    - name: push
-      uses: github-actions-x/commit@v2.8
-      if: github.event.pull_request == false
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -am "Bump Docker Tag"
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
       with:
-        github-token: ${{ secrets.GH_TOKEN }}
-        push-branch: 'main'
-        commit-message: '[VERSION] bump version'
-        files: .last_sucessful_tag ./helm/values.yaml
-        name: GitHub Action
-        email: "action@github.com"
+        github_token: ${{ secrets.GH_TOKEN }}
