@@ -2,7 +2,7 @@ microservice-deploys:
   container:
     microserviceName: frontend
     image: ronaldmiranda/frontend
-    tag: 40971f3
+    tag: 7f479e2
     envs:
       normalEnvs:
         AUTH_API_PORT: "8081"
