@@ -12,4 +12,4 @@ microservice-deploys:
   service:
     servicePort:
       - 8080
-    typeLoadbalancer: true
+    typeLoadBalancer: true
