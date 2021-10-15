@@ -5,12 +5,11 @@ microservice-deploys:
     tag: dd50316
     envs:
       normalEnvs:
-        AUTH_API_PORT: "8081"
         AUTH_API_ADDRESS: http://auth-api:8081
         PORT: "8080"
         TODOS_API_ADDRESS: http://todos-api:8082
         ZIPKIN_URL: http://zipkin-svc.zipkin-system.svc.cluster.local:9411/api/v2/spans
   service:
     servicePort:
-      - 8081
+      - 8080
     typeLoadbalancer: true
