@@ -3,7 +3,7 @@ node {
     stage "feching helm repo"
         sh "helm dependency update ./helm"
     stage('Deploy to cluster') {
-        sh 'helm install ./helm --set microservice-deploys.container.namespace=microservice-ns --generate-name --kubeconfig /home/ubuntu/.kube/config'
+        sh 'helm install microservice-frontend ./helm --set microservice-deploys.container.namespace=microservice-ns --kubeconfig /home/ubuntu/.kube/config'
     }
 }
 
