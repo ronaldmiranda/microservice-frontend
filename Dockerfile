@@ -10,4 +10,4 @@ RUN npm install
 
 COPY ./src .
 
-ENTRYPOINT ["npm", "start"]
+ENTRYPOINT ["npm"]
