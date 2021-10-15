@@ -3,7 +3,7 @@ microservice-deploys:
   container:
     microserviceName: frontend
     image: ronaldmiranda/frontend
-    tag: dd50316
+    tag: db6120d
     envs:
       normalEnvs:
         AUTH_API_ADDRESS: http://auth-api:8081
