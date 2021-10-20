@@ -5,5 +5,5 @@ version: 2.0.0
 appVersion: "2.0.0"
 dependencies:
 - name: microservice-deploys
-  version: "2.0.0"
+  version: "2.0.1"
   repository: https://ronaldmiranda.github.io/microservices-helm/microservice-deploys
